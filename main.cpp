@@ -39,7 +39,7 @@ static void draw_char_at(int col, int row, char c, uint32_t fg) {
     for (int r = 0; r < 8; r++) {
         uint8_t bits = glyph[r];
         for (int b = 0; b < 8; b++) {
-            uint32_t color = (bits & (1 << (7 - b))) ? fg : BG_COLOR;
+            uint32_t color = (bits & (1 << b)) ? fg : BG_COLOR;
             for (int sy = 0; sy < SCALE; sy++)
                 for (int sx = 0; sx < SCALE; sx++)
                     fb[(py + r*SCALE + sy)*WIN_W + (px + b*SCALE + sx)] = color;
