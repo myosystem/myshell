@@ -161,6 +161,14 @@ static void execute(const char* cmd) {
     argv[argc] = nullptr;
     if (argc == 0) { show_prompt(); return; }
 
+    if (strcmp(argv[0], "cd") == 0) {
+        const char* target = (argc >= 2) ? argv[1] : "@/";
+        if (chdir(target) != 0)
+            puts_term("cd: no such directory\n", FG_COLOR);
+        show_prompt();
+        return;
+    }
+
     path[0] = '@'; path[1] = '/';
     int pl = 2;
     for (int i = 0; argv[0][i]; i++) path[pl++] = argv[0][i];
