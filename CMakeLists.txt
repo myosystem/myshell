@@ -1,4 +1,4 @@
-file(GLOB SRCS *.cpp *.h)
+file(GLOB SRCS CONFIGURE_DEPENDS *.cpp *.h)
 
 add_executable(myshell ${SRCS})
 
